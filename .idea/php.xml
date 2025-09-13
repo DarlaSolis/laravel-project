@@ -153,6 +153,29 @@
       <path value="$PROJECT_DIR$/doctor-appointment-app/vendor/phpunit/phpunit" />
       <path value="$PROJECT_DIR$/doctor-appointment-app/vendor/symfony/clock" />
       <path value="$PROJECT_DIR$/doctor-appointment-app/vendor/livewire/livewire" />
+      <path value="$PROJECT_DIR$/doctor-appointment-app/vendor/laravel/sanctum" />
+      <path value="$PROJECT_DIR$/doctor-appointment-app/vendor/dragon-code/contracts" />
+      <path value="$PROJECT_DIR$/doctor-appointment-app/vendor/dragon-code/pretty-array" />
+      <path value="$PROJECT_DIR$/doctor-appointment-app/vendor/dragon-code/support" />
+      <path value="$PROJECT_DIR$/doctor-appointment-app/vendor/archtechx/enums" />
+      <path value="$PROJECT_DIR$/doctor-appointment-app/vendor/laravel-lang/actions" />
+      <path value="$PROJECT_DIR$/doctor-appointment-app/vendor/laravel-lang/attributes" />
+      <path value="$PROJECT_DIR$/doctor-appointment-app/vendor/laravel-lang/common" />
+      <path value="$PROJECT_DIR$/doctor-appointment-app/vendor/laravel-lang/config" />
+      <path value="$PROJECT_DIR$/doctor-appointment-app/vendor/laravel-lang/http-statuses" />
+      <path value="$PROJECT_DIR$/doctor-appointment-app/vendor/laravel-lang/json-fallback" />
+      <path value="$PROJECT_DIR$/doctor-appointment-app/vendor/laravel-lang/lang" />
+      <path value="$PROJECT_DIR$/doctor-appointment-app/vendor/laravel-lang/locale-list" />
+      <path value="$PROJECT_DIR$/doctor-appointment-app/vendor/laravel-lang/locales" />
+      <path value="$PROJECT_DIR$/doctor-appointment-app/vendor/laravel-lang/models" />
+      <path value="$PROJECT_DIR$/doctor-appointment-app/vendor/laravel-lang/moonshine" />
+      <path value="$PROJECT_DIR$/doctor-appointment-app/vendor/laravel-lang/native-country-names" />
+      <path value="$PROJECT_DIR$/doctor-appointment-app/vendor/laravel-lang/native-currency-names" />
+      <path value="$PROJECT_DIR$/doctor-appointment-app/vendor/laravel-lang/native-locale-names" />
+      <path value="$PROJECT_DIR$/doctor-appointment-app/vendor/laravel-lang/publisher" />
+      <path value="$PROJECT_DIR$/doctor-appointment-app/vendor/laravel-lang/routes" />
+      <path value="$PROJECT_DIR$/doctor-appointment-app/vendor/laravel-lang/starter-kits" />
+      <path value="$PROJECT_DIR$/doctor-appointment-app/vendor/symfony/polyfill-php81" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />
