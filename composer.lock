@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "603d518f8b9d324cf19853b32f79c14a",
+    "content-hash": "83200ee844ed911d747d17948a7ce14a",
     "packages": [
         {
             "name": "archtechx/enums",
