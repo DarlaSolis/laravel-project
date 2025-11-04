@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "396dac2245b4ad25e1584d5d7cd3fd63",
+    "content-hash": "b9535e7b748947ba95899470f510a59a",
     "packages": [
         {
             "name": "archtechx/enums",
@@ -5895,16 +5895,16 @@
         },
         {
             "name": "rappasoft/laravel-livewire-tables",
-            "version": "v3.7.0",
+            "version": "v3.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rappasoft/laravel-livewire-tables.git",
-                "reference": "0036a9aa00bc70cdaf119a2ab274952575251493"
+                "reference": "74beb4c2672e024000d41ecad8a17b4ab8c934bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rappasoft/laravel-livewire-tables/zipball/0036a9aa00bc70cdaf119a2ab274952575251493",
-                "reference": "0036a9aa00bc70cdaf119a2ab274952575251493",
+                "url": "https://api.github.com/repos/rappasoft/laravel-livewire-tables/zipball/74beb4c2672e024000d41ecad8a17b4ab8c934bd",
+                "reference": "74beb4c2672e024000d41ecad8a17b4ab8c934bd",
                 "shasum": ""
             },
             "require": {
@@ -5964,7 +5964,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rappasoft/laravel-livewire-tables/issues",
-                "source": "https://github.com/rappasoft/laravel-livewire-tables/tree/v3.7.0"
+                "source": "https://github.com/rappasoft/laravel-livewire-tables/tree/v3.7.3"
             },
             "funding": [
                 {
@@ -5972,7 +5972,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-28T01:30:50+00:00"
+            "time": "2025-05-03T02:24:46+00:00"
         },
         {
             "name": "spatie/laravel-permission",

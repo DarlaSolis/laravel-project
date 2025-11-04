@@ -1,8 +1,9 @@
 @props ([
     'title' => config('app.name', 'laravel'),
-    'breadcrumbs' => []])
+    'breadcrumbs' => []
+])
 
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -36,6 +37,10 @@
     <div class="mt-14 flex items-center justify-between w-full">
         @include('layouts.includes.admin.breadcrumb', ['breadcrumbs' => $breadcrumbs])
 
+        {{-- SLOT PARA ACCIONES - AQUÍ APARECERÁ EL BOTÓN "NUEVO" --}}
+        <div class="flex items-center space-x-2">
+            {{ $actions ?? '' }}
+        </div>
     </div>
     {{ $slot }}
 </div>
@@ -44,7 +49,6 @@
 
 @livewireScripts
 <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
-</nav>
 
 <!-- Script para inicializar Alpine.js manualmente -->
 <script>
