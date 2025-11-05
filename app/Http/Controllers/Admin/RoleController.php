@@ -30,14 +30,22 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255|unique:roles,name',
-        ]);
+        //Validar que se cree bien
+        $request->validate(['name' => 'required|unique:roles,name']);
 
+        //Si pasa la validación, creará el rol
         Role::create(['name' => $request->name]);
 
-        return redirect()->route('admin.roles.index')
-            ->with('success', 'Rol creado exitosamente.');
+        //Variable de un solo uso para alerta
+        session()->flash('swal',
+        [
+            'icon' => 'success',
+            'title' => 'Role creado correctamente',
+            'text' => 'El rol ha sido creado correctamente'
+        ]);
+
+        //Redireccionará a la tabla principal
+        return redirect()->route('admin.roles.index')->with('success', 'Role created successfully');
     }
 
     /**
@@ -76,9 +84,6 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        $role->delete();
-
-        return redirect()->route('admin.roles.index')
-            ->with('success', 'Rol eliminado exitosamente.');
+        //
     }
 }

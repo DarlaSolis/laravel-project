@@ -4,7 +4,7 @@
         'href' => route('admin.dashboard')
     ],
     [
-        'name' => 'Roles',
+        'name' => 'Editar',
         'href' => route('admin.roles.index')
     ],
 ]">
