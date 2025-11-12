@@ -4,8 +4,11 @@
         'href' => route('admin.dashboard')
     ],
     [
-        'name' => 'Nuevo',
+        'name' => 'Roles',
         'href' => route('admin.roles.index')
+    ],
+    [
+        'name' => 'Nuevo',
     ],
 ]">
     <x-wire-card>

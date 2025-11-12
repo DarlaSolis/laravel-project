@@ -4,8 +4,11 @@
         'href' => route('admin.dashboard')
     ],
     [
-        'name' => 'Editar',
+        'name' => 'Roles',
         'href' => route('admin.roles.index')
+    ],
+    [
+        'name' => 'Editar',
     ],
 ]">
     <x-wire-card>
@@ -20,7 +23,5 @@
                 <x-wire-button type="submit" blue>Actualizar</x-wire-button>
             </div>
         </form>
-
     </x-wire-card>
 </x-admin-layout>
-
