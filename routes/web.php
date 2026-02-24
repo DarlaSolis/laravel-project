@@ -20,5 +20,8 @@ Route::middleware([
 
         Route::get('/roles', [RoleController::class, 'index'])->name('roles.index');
 
+        //RUTA PARA DOCTORES
+        Route::resource('doctors', App\Http\Controllers\Admin\DoctorController::class);
+
     });
 });

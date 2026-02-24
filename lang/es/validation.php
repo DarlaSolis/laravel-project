@@ -290,7 +290,8 @@ return [
         'surgical_history'          => 'antecedentes quirúrgicos',
         'family_history'            => 'antecedentes familiares',
         'emergency_contact_name'    => 'nombre del contacto de emergencia',
-        'emergency_contact_relationship' => 'relación del contacto'
+        'emergency_contact_relationship' => 'relación del contacto',
+        'emergency_contact_phone' => 'teléfono del contacto de emergencias',
 
     ],
 

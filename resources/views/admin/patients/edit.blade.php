@@ -16,7 +16,7 @@
                          alt="{{ $patient->user->name }}"
                          class="w-20 h-20 rounded-full object-cover object-center">
                     <div>
-                        <p class="text-2xl font-bold text-gray-900">
+                        <p class="text-2xl font-bold text-gray-900 ml-4">
                             {{ $patient->user->name }}
                         </p>
                     </div>
@@ -46,17 +46,26 @@
                         Datos personales
                     </x-tabs-link>
 
-                    <x-tabs-link tab="antecedentes" :error="$errors->any()">
+                    <x-tabs-link
+                        tab="antecedentes"
+                        :error="$errors->hasAny(['allergies', 'chronic_conditions', 'surgical_history', 'family_history'])"
+                    >
                         <i class="fa-solid fa-file-lines me-2"></i>
                         Antecedentes
                     </x-tabs-link>
 
-                    <x-tabs-link tab="informacion-general">
+                    <x-tabs-link
+                        tab="informacion-general"
+                        :error="$errors->hasAny(['blood_type_id', 'observations'])"
+                    >
                         <i class="fa-solid fa-info me-2"></i>
                         Información general
                     </x-tabs-link>
 
-                    <x-tabs-link tab="contacto-emergencia">
+                    <x-tabs-link
+                        tab="contacto-emergencia"
+                        :error="$errors->hasAny(['emergency_contact_name', 'emergency_contact_phone', 'emergency_contact_relationship'])"
+                    >
                         <i class="fa-solid fa-heart me-2"></i>
                         Contacto de emergencia
                     </x-tabs-link>
@@ -132,7 +141,7 @@
                             @foreach ($bloodTypes as $bloodType)
                                 <option value="{{ $bloodType->id }}"
                                     @selected(old('blood_type_id', $patient->blood_type_id) == $bloodType->id)>
-                                    {{ $bloodType->type }}
+                                    {{ $bloodType->name }}
                                 </option>
                             @endforeach
                         </x-wire-native-select>
@@ -141,8 +150,9 @@
                             <x-wire-textarea
                                 name="observations"
                                 label="Observaciones"
-                                rows="4"
-                                :value="old('observations', $patient->observations)" />
+                                rows="4">
+                                {{ old('observations', $patient->observations) }}
+                            </x-wire-textarea>
                         </div>
                     </div>
                 </x-tab-content>
@@ -153,18 +163,22 @@
                         <x-wire-input
                             name="emergency_contact_name"
                             label="Nombre de contacto"
+                            placeholder="Ej: María González"
                             :value="old('emergency_contact_name', $patient->emergency_contact_name)" />
 
                         <x-wire-phone
                             name="emergency_contact_phone"
+                            x-init="$nextTick(() => $el.dispatchEvent(new Event('input')))"
                             label="Teléfono de contacto"
-                            mask="(###) ###-####">
-                            {{ old('emergency_contact_phone', $patient->emergency_contact_phone) }}
-                        </x-wire-phone>
+                            :value="old('emergency_contact_phone', $patient->emergency_contact_phone_formatted)"
+                            mask="(###) ###-####"
+                            placeholder="(999) 999-9999"
+                            :error="$errors->has('emergency_contact_phone')" />
 
                         <x-wire-input
                             name="emergency_contact_relationship"
                             label="Relación"
+                            placeholder="Ej: Esposa, Hermano, Madre"
                             :value="old('emergency_contact_relationship', $patient->emergency_contact_relationship)" />
                     </div>
                 </x-tab-content>
