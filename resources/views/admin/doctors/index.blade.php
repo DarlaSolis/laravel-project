@@ -1,13 +1,13 @@
 <x-admin-layout title="Doctores | Farmacon">
     <div class="mb-6 flex justify-between items-center">
         <h1 class="text-2xl font-bold text-gray-900">Doctores</h1>
-        <x-wire-button primary href="{{ route('admin.doctors.create') }}">
+        <x-button primary href="{{ route('admin.doctors.create') }}">
             <i class="fa-solid fa-plus mr-2"></i>
             Nuevo Doctor
-        </x-wire-button>
+        </x-button>
     </div>
 
-    <x-wire-card>
+    <div class="mt-8 flow-root bg-white shadow overflow-hidden sm:rounded-lg border border-gray-200"><div class="p-6">
         <div class="overflow-x-auto">
             <table class="w-full text-sm text-left text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
@@ -40,29 +40,37 @@
                         </td>
                         <td class="px-6 py-4">
                             <div class="flex items-center space-x-2">
+                                {{-- Botón Horarios --}}
+                                <x-button
+                                    href="{{ route('admin.doctors.schedules', $doctor) }}"
+                                    green
+                                    xs
+                                >
+                                    <i class="fa-solid fa-clock"></i>
+                                </x-button>
+
                                 {{-- Botón Editar --}}
-                                <x-wire-button
+                                <x-button
                                     href="{{ route('admin.doctors.edit', $doctor) }}"
                                     blue
                                     xs
                                 >
                                     <i class="fa-solid fa-pen-to-square"></i>
-                                </x-wire-button>
+                                </x-button>
 
-                                {{-- Botón Eliminar con validación para no eliminar al admin --}}
                                 {{-- Botón Eliminar con validación para no eliminar al admin --}}
                                 @if($doctor->user->id !== 1)
                                     <form action="{{ route('admin.doctors.destroy', $doctor) }}" method="POST" class="delete-form">
                                         @csrf
                                         @method('DELETE')
-                                        <x-wire-button type="submit" red xs>
+                                        <x-button type="submit" red xs>
                                             <i class="fa-solid fa-trash"></i>
-                                        </x-wire-button>
+                                        </x-button>
                                     </form>
                                 @else
-                                    <x-wire-button type="button" red xs disabled>
+                                    <x-button type="button" red xs disabled>
                                         <i class="fa-solid fa-trash"></i>
-                                    </x-wire-button>
+                                    </x-button>
                                 @endif
                             </div>
                         </td>
@@ -77,7 +85,7 @@
                 </div>
             @endif
         </div>
-    </x-wire-card>
+    </div></div>
 </x-admin-layout>
 
 

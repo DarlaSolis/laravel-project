@@ -11,17 +11,17 @@
         'name' => 'Editar',
     ],
 ]">
-    <x-wire-card>
+    <div class="mt-8 flow-root bg-white shadow overflow-hidden sm:rounded-lg border border-gray-200"><div class="p-6">
         <form action="{{ route('admin.roles.update', $role) }}" method="POST">
             @csrf
             @method('PUT')
 
-            <x-wire-input label="Nombre" name="name" placeholder="Nombre del rol" value="{{ old('name', $role->name) }}">
+            <x-input label="Nombre" name="name" placeholder="Nombre del rol" value="{{ old('name', $role->name) }}">
 
-            </x-wire-input>
+            </x-input>
             <div class="flex justify-end mt-4">
-                <x-wire-button type="submit" blue>Actualizar</x-wire-button>
+                <x-button type="submit" blue>Actualizar</x-button>
             </div>
         </form>
-    </x-wire-card>
+    </div></div>
 </x-admin-layout>

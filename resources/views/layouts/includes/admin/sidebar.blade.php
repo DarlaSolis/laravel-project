@@ -37,6 +37,30 @@
             'active' => request()->routeIs('admin.doctors.*'),
         ],
 
+        // Citas Médicas
+        [
+            'name' => 'Citas médicas',
+            'icon' => 'fa-solid fa-calendar-check',
+            'href' => route('admin.appointments.index'),
+            'active' => request()->routeIs('admin.appointments.*'),
+        ],
+
+        // Calendario
+        [
+            'name' => 'Calendario',
+            'icon' => 'fa-regular fa-calendar-days',
+            'href' => route('admin.calendar.index'),
+            'active' => request()->routeIs('admin.calendar.index'),
+        ],
+
+        // Soporte
+        [
+            'name' => 'Soporte',
+            'icon' => 'fa-solid fa-headset',
+            'href' => route('admin.appointments.index'),
+            'active' => request()->routeIs('admin.tickets.*'),
+        ],
+
     ];
 @endphp
 
