@@ -1,19 +1,19 @@
 <div class="flex items-center space-x-2">
-    <x-button href="{{ route('admin.users.edit', $user) }}" blue xs>
+    <x-wire-button href="{{ route('admin.users.edit', $user) }}" blue xs>
         <i class="fa-solid fa-pen-to-square"></i>
-    </x-button>
+    </x-wire-button>
 
     @if($user->id !== 1)
         <form action="{{ route('admin.users.destroy', $user) }}" method="POST" class="delete-form">
             @csrf
             @method('DELETE')
-            <x-button type="submit" red xs>
+            <x-wire-button type="submit" red xs>
                 <i class="fa-solid fa-trash"></i>
-            </x-button>
+            </x-wire-button>
         </form>
     @else
-        <x-button type="button" red xs disabled>
+        <x-wire-button type="button" red xs disabled>
             <i class="fa-solid fa-trash"></i>
-        </x-button>
+        </x-wire-button>
     @endif
 </div>

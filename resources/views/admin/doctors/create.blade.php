@@ -7,28 +7,28 @@
     <form action="{{ route('admin.doctors.store') }}" method="POST">
         @csrf
 
-        <x-card class="mb-8">
+        <x-wire-card class="mb-8">
             <div class="flex justify-between items-center">
                 <h2 class="text-xl font-bold text-gray-900">Nuevo Doctor</h2>
                 <div class="flex space-x-3">
-                    <x-button outline gray href="{{ route('admin.doctors.index') }}">
+                    <x-wire-button outline gray href="{{ route('admin.doctors.index') }}">
                         Cancelar
-                    </x-button>
-                    <x-button type="submit">
+                    </x-wire-button>
+                    <x-wire-button type="submit">
                         <i class="fa-solid fa-check mr-2"></i>
                         Guardar Doctor
-                    </x-button>
+                    </x-wire-button>
                 </div>
             </div>
-        </div></div>
+        </x-wire-card>
 
-        <div class="mt-8 flow-root bg-white shadow overflow-hidden sm:rounded-lg border border-gray-200"><div class="p-6">
+        <x-wire-card>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <h3 class="md:col-span-2 text-lg font-semibold text-gray-700">Datos del Usuario</h3>
 
                 {{-- Nombre --}}
                 <div>
-                    <x-input
+                    <x-wire-input
                         name="name"
                         label="Nombre completo"
                         placeholder="Ej: Dr. Juan Pérez"
@@ -40,7 +40,7 @@
 
                 {{-- Email --}}
                 <div>
-                    <x-input
+                    <x-wire-input
                         name="email"
                         label="Correo electrónico"
                         type="email"
@@ -53,7 +53,7 @@
 
                 {{-- Contraseña --}}
                 <div>
-                    <x-input
+                    <x-wire-input
                         name="password"
                         label="Contraseña"
                         type="password"
@@ -65,7 +65,7 @@
 
                 {{-- Confirmar contraseña --}}
                 <div>
-                    <x-input
+                    <x-wire-input
                         name="password_confirmation"
                         label="Confirmar contraseña"
                         type="password"
@@ -76,7 +76,7 @@
 
                 {{-- ID Number --}}
                 <div>
-                    <x-input
+                    <x-wire-input
                         name="id_number"
                         label="Cédula de identidad"
                         placeholder="Ej: 12345678"
@@ -87,7 +87,7 @@
 
                 {{-- Teléfono --}}
                 <div>
-                    <x-input
+                    <x-wire-input
                         name="phone"
                         label="Teléfono"
                         placeholder="Ej: 1234567890"
@@ -98,7 +98,7 @@
 
                 {{-- Dirección --}}
                 <div class="md:col-span-2">
-                    <x-input
+                    <x-wire-input
                         name="address"
                         label="Dirección"
                         placeholder="Ej: Calle Principal #123"
@@ -113,7 +113,7 @@
 
                 {{-- Especialidad --}}
                 <div>
-                    <x-native-select
+                    <x-wire-native-select
                         name="specialty_id"
                         label="Especialidad"
                         :error="$errors->first('specialty_id')"
@@ -126,12 +126,12 @@
                                 {{ $specialty->name }}
                             </option>
                         @endforeach
-                    </x-native-select>
+                    </x-wire-native-select>
                 </div>
 
                 {{-- Cédula Profesional --}}
                 <div>
-                    <x-input
+                    <x-wire-input
                         name="license_number"
                         label="Cédula Profesional"
                         placeholder="Ej: 12345678"
@@ -142,7 +142,7 @@
 
                 {{-- Biografía --}}
                 <div class="md:col-span-2">
-                    <x-textarea
+                    <x-wire-textarea
                         name="biography"
                         label="Biografía"
                         placeholder="Breve descripción profesional del doctor..."
@@ -150,9 +150,9 @@
                         :error="$errors->first('biography')"
                     >
                         {{ old('biography') }}
-                    </x-textarea>
+                    </x-wire-textarea>
                 </div>
             </div>
-        </div></div>
+        </x-wire-card>
     </form>
 </x-admin-layout>

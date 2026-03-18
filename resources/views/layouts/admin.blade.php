@@ -33,8 +33,6 @@
     @livewireStyles
 </head>
 <body class="font-sans antialiased bg-gray-50">
-<x-notifications position="top-right" />
-<x-dialog z-index="z-50" blur="md" align="center" />
 @include('layouts.includes.admin.navigation')
 @include('layouts.includes.admin.sidebar')
 
@@ -111,6 +109,5 @@
             })
         });
     </script>
-    @stack('js')
 </body>
 </html>

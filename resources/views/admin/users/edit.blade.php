@@ -3,13 +3,13 @@
     ['name' => 'Usuarios', 'href' => route('admin.users.index')],
     ['name' => 'Editar Usuario'],
 ]">
-    <div class="mt-8 flow-root bg-white shadow overflow-hidden sm:rounded-lg border border-gray-200"><div class="p-6">
+    <x-wire-card>
         <form action="{{ route('admin.users.update', $user) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="space-y-4">
                 <div class="grid lg:grid-cols-2 gap-4">
-                    <x-input
+                    <x-wire-input
                         name="name"
                         label="Nombre"
                         required :value="old('name', $user->name)"
@@ -17,7 +17,7 @@
                         autocomplete="name"
                     />
 
-                    <x-input
+                    <x-wire-input
                         name="email"
                         label="Email"
                         required :value="old('email', $user->email)"
@@ -26,7 +26,7 @@
                         inputmode="email"
                     />
 
-                    <x-input
+                    <x-wire-input
                         name="password"
                         label="Contraseña"
                         type="password"
@@ -35,7 +35,7 @@
                         inputmode="password"
                     />
 
-                    <x-input
+                    <x-wire-input
                         name="password_confirmation"
                         label="Confirmar contraseña"
                         type="password"
@@ -44,7 +44,7 @@
                         inputmode="password"
                     />
 
-                    <x-input
+                    <x-wire-input
                         name="id_number"
                         label="Número de ID"
                         required :value="old('id_number', $user->id_number)"
@@ -53,7 +53,7 @@
                         inputmode="numeric"
                     />
 
-                    <x-input
+                    <x-wire-input
                         name="phone"
                         label="Teléfono"
                         required :value="old('phone', $user->phone)"
@@ -63,7 +63,7 @@
                     />
                 </div>
 
-                <x-input
+                <x-wire-input
                     name="address"
                     label="Dirección"
                     required :value="old('address', $user->address)"
@@ -73,7 +73,7 @@
             </div>
 
             <div class="space-y-1">
-                <x-native-select
+                <x-wire-native-select
                     name="role_id"
                     label="Rol"
                     required>
@@ -85,18 +85,18 @@
                             {{ $role->name }}
                         </option>
                     @endforeach
-                </x-native-select>
+                </x-wire-native-select>
 
                 <p class="text-sm text-gray-500">
                     Define los permisos y accesos del usuario
                 </p>
 
                 <div class="flex justify-end">
-                    <x-button type="submit">
+                    <x-wire-button type="submit">
                         Actualizar
-                    </x-button>
+                    </x-wire-button>
                 </div>
             </div>
         </form>
-    </div></div>
+    </x-wire-card>
 </x-admin-layout>

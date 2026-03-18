@@ -9,7 +9,7 @@
         @method('PUT')
 
         {{-- Encabezado --}}
-        <x-card class="mb-8">
+        <x-wire-card class="mb-8">
             <div class="lg:flex justify-between items-center">
                 <div class="flex items-center">
                     <img src="{{ $patient->user->profile_photo_url }}"
@@ -23,20 +23,20 @@
                 </div>
 
                 <div class="flex space-x-3 mt-6 lg:mt-0">
-                    <x-button outline gray href="{{ route('admin.patients.index') }}">
+                    <x-wire-button outline gray href="{{ route('admin.patients.index') }}">
                         Volver
-                    </x-button>
+                    </x-wire-button>
 
-                    <x-button type="submit">
+                    <x-wire-button type="submit">
                         <i class="fa-solid fa-check"></i>
                         Guardar cambios
-                    </x-button>
+                    </x-wire-button>
                 </div>
             </div>
-        </div></div>
+        </x-wire-card>
 
         {{-- Tabs --}}
-        <div class="mt-8 flow-root bg-white shadow overflow-hidden sm:rounded-lg border border-gray-200"><div class="p-6">
+        <x-wire-card>
             <x-tabs active="datos-personales">
 
                 {{-- HEADER --}}
@@ -115,28 +115,28 @@
                 {{-- TAB: ANTECEDENTES --}}
                 <x-tab-content tab="antecedentes">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                        <x-textarea name="allergies" label="Alergias" rows="4">
+                        <x-wire-textarea name="allergies" label="Alergias" rows="4">
                             {{ old('allergies', $patient->allergies) }}
-                        </x-textarea>
+                        </x-wire-textarea>
 
-                        <x-textarea name="chronic_conditions" label="Enfermedades Crónicas" rows="4">
+                        <x-wire-textarea name="chronic_conditions" label="Enfermedades Crónicas" rows="4">
                             {{ old('chronic_conditions', $patient->chronic_conditions) }}
-                        </x-textarea>
+                        </x-wire-textarea>
 
-                        <x-textarea name="surgical_history" label="Antecedentes Quirúrgicos" rows="4">
+                        <x-wire-textarea name="surgical_history" label="Antecedentes Quirúrgicos" rows="4">
                             {{ old('surgical_history', $patient->surgical_history) }}
-                        </x-textarea>
+                        </x-wire-textarea>
 
-                        <x-textarea name="family_history" label="Antecedentes Familiares" rows="4">
+                        <x-wire-textarea name="family_history" label="Antecedentes Familiares" rows="4">
                             {{ old('family_history', $patient->family_history) }}
-                        </x-textarea>
+                        </x-wire-textarea>
                     </div>
                 </x-tab-content>
 
                 {{-- TAB: INFORMACIÓN GENERAL --}}
                 <x-tab-content tab="informacion-general">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                        <x-native-select name="blood_type_id" label="Tipo de sangre">
+                        <x-wire-native-select name="blood_type_id" label="Tipo de sangre">
                             <option value="">Selecciona un tipo de sangre</option>
                             @foreach ($bloodTypes as $bloodType)
                                 <option value="{{ $bloodType->id }}"
@@ -144,15 +144,15 @@
                                     {{ $bloodType->name }}
                                 </option>
                             @endforeach
-                        </x-native-select>
+                        </x-wire-native-select>
 
                         <div class="lg:col-span-2">
-                            <x-textarea
+                            <x-wire-textarea
                                 name="observations"
                                 label="Observaciones"
                                 rows="4">
                                 {{ old('observations', $patient->observations) }}
-                            </x-textarea>
+                            </x-wire-textarea>
                         </div>
                     </div>
                 </x-tab-content>
@@ -160,13 +160,13 @@
                 {{-- TAB: CONTACTO EMERGENCIA --}}
                 <x-tab-content tab="contacto-emergencia">
                     <div class="space-y-4">
-                        <x-input
+                        <x-wire-input
                             name="emergency_contact_name"
                             label="Nombre de contacto"
                             placeholder="Ej: María González"
                             :value="old('emergency_contact_name', $patient->emergency_contact_name)" />
 
-                        <x-phone
+                        <x-wire-phone
                             name="emergency_contact_phone"
                             x-init="$nextTick(() => $el.dispatchEvent(new Event('input')))"
                             label="Teléfono de contacto"
@@ -175,7 +175,7 @@
                             placeholder="(999) 999-9999"
                             :error="$errors->has('emergency_contact_phone')" />
 
-                        <x-input
+                        <x-wire-input
                             name="emergency_contact_relationship"
                             label="Relación"
                             placeholder="Ej: Esposa, Hermano, Madre"
@@ -184,7 +184,7 @@
                 </x-tab-content>
 
             </x-tabs>
-        </div></div>
+        </x-wire-card>
     </form>
 
 </x-admin-layout>

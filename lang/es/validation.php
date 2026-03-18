@@ -292,7 +292,6 @@ return [
         'emergency_contact_name'    => 'nombre del contacto de emergencia',
         'emergency_contact_relationship' => 'relación del contacto',
         'emergency_contact_phone' => 'teléfono del contacto de emergencias',
-        'license_number' => 'cédula profesional',
 
     ],
 

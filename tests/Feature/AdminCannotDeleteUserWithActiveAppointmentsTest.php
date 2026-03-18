@@ -23,8 +23,9 @@ test('Admin cannot delete themselves', function () {
     // 3. Intentar eliminarse a sí mismo
     $response = $this->delete(route('admin.users.destroy', $admin));
 
-    // 4. Debería devolver error 403 (por el abort(403) en tu controlador)
-    $response->assertStatus(403);
+    // 4. Debería devolver redirección 302 a index con mensaje de error (UserController logic)
+    $response->assertRedirect(route('admin.users.index'));
+    $response->assertSessionHas('swal');
 
     // 5. El admin debería seguir existiendo
     $this->assertDatabaseHas('users', ['id' => $admin->id]);

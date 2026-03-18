@@ -10,7 +10,7 @@
         @method('PUT')
 
         {{-- Encabezado con información del doctor y N/A --}}
-        <x-card class="mb-8">
+        <x-wire-card class="mb-8">
             <div class="lg:flex justify-between items-center">
                 <div class="flex items-center space-x-4">
                     <img src="{{ $doctor->user->profile_photo_url }}"
@@ -38,23 +38,23 @@
                 </div>
 
                 <div class="flex space-x-3 mt-6 lg:mt-0">
-                    <x-button outline gray href="{{ route('admin.doctors.index') }}">
+                    <x-wire-button outline gray href="{{ route('admin.doctors.index') }}">
                         Volver
-                    </x-button>
-                    <x-button type="submit">
+                    </x-wire-button>
+                    <x-wire-button type="submit">
                         <i class="fa-solid fa-check mr-2"></i>
                         Actualizar Doctor
-                    </x-button>
+                    </x-wire-button>
                 </div>
             </div>
-        </div></div>
+        </x-wire-card>
 
         {{-- Formulario de edición --}}
-        <div class="mt-8 flow-root bg-white shadow overflow-hidden sm:rounded-lg border border-gray-200"><div class="p-6">
+        <x-wire-card>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {{-- Especialidad --}}
                 <div>
-                    <x-native-select
+                    <x-wire-native-select
                         name="specialty_id"
                         label="Especialidad"
                         :error="$errors->first('specialty_id')"
@@ -66,12 +66,12 @@
                                 {{ $specialty->name }}
                             </option>
                         @endforeach
-                    </x-native-select>
+                    </x-wire-native-select>
                 </div>
 
                 {{-- Cédula Profesional --}}
                 <div>
-                    <x-input
+                    <x-wire-input
                         name="license_number"
                         label="Cédula Profesional"
                         placeholder="Ej: 12345678"
@@ -82,7 +82,7 @@
 
                 {{-- Biografía --}}
                 <div class="md:col-span-2">
-                    <x-textarea
+                    <x-wire-textarea
                         name="biography"
                         label="Biografía"
                         placeholder="Breve descripción profesional del doctor..."
@@ -90,9 +90,9 @@
                         :error="$errors->first('biography')"
                     >
                         {{ old('biography', $doctor->biography) }}
-                    </x-textarea>
+                    </x-wire-textarea>
                 </div>
             </div>
-        </div></div>
+        </x-wire-card>
     </form>
 </x-admin-layout>

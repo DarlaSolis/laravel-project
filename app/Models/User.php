@@ -51,11 +51,4 @@ class User extends Authenticatable
         return $this->hasOne(Doctor::class);
     }
 
-    /**
-     * Relación: Un usuario puede crear varios tickets
-     */
-    public function tickets()
-    {
-        return $this->hasMany(Ticket::class);
-    }
 }
