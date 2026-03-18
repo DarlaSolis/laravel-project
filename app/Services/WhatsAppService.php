@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Log;
 class WhatsAppService
 {
     /**
-     * Send a WhatsApp message to a specific number via the local Node.js microservice.
+     * Send a WhatsApp message to a specific number via the official Meta WhatsApp Cloud API.
      *
      * @param string $phone The recipient's phone number.
      * @param string $message The content of the message.
@@ -22,20 +22,34 @@ class WhatsAppService
                 throw new \Exception('Phone number and message are required.');
             }
 
-            // Node.js microservice endpoint
-            $url = env('WHATSAPP_NODE_SERVICE_URL', 'http://localhost:3000/send-message');
+            // Meta App Credentials from .env
+            $token = env('WHATSAPP_META_TOKEN');
+            $phoneId = env('WHATSAPP_META_PHONE_ID');
+            $version = env('WHATSAPP_META_VERSION', 'v17.0');
+
+            if (!$token || !$phoneId) {
+                throw new \Exception('WhatsApp Meta credentials (Token or Phone ID) are not configured in .env.');
+            }
+
+            // Official Meta API endpoint
+            $url = "https://graph.facebook.com/{$version}/{$phoneId}/messages";
 
             // Send POST request
-            $response = Http::post($url, [
-                'phone' => $phone,
-                'message' => $message,
-            ]);
+            $response = Http::withToken($token)
+                ->post($url, [
+                    'messaging_product' => 'whatsapp',
+                    'to' => $phone,
+                    'type' => 'text',
+                    'text' => [
+                        'body' => $message,
+                    ],
+                ]);
 
-            if ($response->successful() && $response->json('success') === true) {
-                Log::info("WhatsApp message sent successfully to [{$phone}] via Node service.");
+            if ($response->successful()) {
+                Log::info("WhatsApp message sent successfully to [{$phone}] via Meta API.");
                 return true;
             } else {
-                throw new \Exception("Node service rejected the request: " . $response->body());
+                throw new \Exception("Meta API rejected the request: " . $response->body());
             }
 
         } catch (\Exception $e) {
