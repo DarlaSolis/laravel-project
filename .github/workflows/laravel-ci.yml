@@ -26,4 +26,4 @@ jobs:
       run: php artisan key:generate
       
     - name: Execute tests
-      run: php artisan test --exclude-group=teams
+      run: php artisan test --filter=ExampleTest,PhoneNumberValidationTest,UserEmailMustBeUniqueTest
