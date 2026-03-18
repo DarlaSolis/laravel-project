@@ -23,5 +23,9 @@ Route::middleware([
         //RUTA PARA DOCTORES
         Route::resource('doctors', App\Http\Controllers\Admin\DoctorController::class);
 
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->name('dashboard');
+
     });
 });
