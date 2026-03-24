@@ -9,9 +9,9 @@
 
 <div class="flex items-center space-x-2">
     {{-- Botón Editar --}}
-    <x-wire-button href="{{ $editRoute }}" blue xs>
+    <x-button href="{{ $editRoute }}" blue xs>
         <i class="fa-solid fa-pen-to-square"></i>
-    </x-wire-button>
+    </x-button>
 
     {{-- Botón Eliminar --}}
     @unless($hideDelete)
@@ -25,18 +25,18 @@
         </form>
 
         {{-- Botón que dispara el SweetAlert --}}
-        <x-wire-button
+        <x-button
             type="button"
             red
             xs
             onclick="confirmDelete({{ $itemId }}, '{{ $itemName }}')"
         >
             <i class="fa-solid fa-trash"></i>
-        </x-wire-button>
+        </x-button>
     @else
         {{-- Botón deshabilitado --}}
-        <x-wire-button type="button" red xs disabled>
+        <x-button type="button" red xs disabled>
             <i class="fa-solid fa-trash"></i>
-        </x-wire-button>
+        </x-button>
     @endunless
 </div>

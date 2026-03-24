@@ -28,6 +28,21 @@ class AppointmentObserver
             $notification->toWhatsApp($user);
             
             \Log::info("Appointment confirmation workflow triggered for Appointment ID: {$appointment->id}");
+            
+            // Send Email PDF Receipt
+            try {
+                $patientEmail = $user->email ?? null;
+                $doctorEmail = $appointment->doctor->user->email ?? null;
+                
+                $emails = array_filter([$patientEmail, $doctorEmail]);
+                
+                if (!empty($emails)) {
+                    \Illuminate\Support\Facades\Mail::to($emails)->send(new \App\Mail\AppointmentReceipt($appointment));
+                    \Log::info("Appointment receipt email sent for Appointment ID: {$appointment->id}");
+                }
+            } catch (\Exception $e) {
+                \Log::error("Failed to send appointment receipt for ID {$appointment->id}: " . $e->getMessage());
+            }
         } else {
             \Log::warning("Could not dispatch confirmation for Appointment ID {$appointment->id} because no patient/user is associated.");
         }

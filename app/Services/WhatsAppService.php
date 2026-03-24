@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Log;
 class WhatsAppService
 {
     /**
-     * Send a WhatsApp message to a specific number via the official Meta WhatsApp Cloud API.
+     * Send a WhatsApp message to a specific number via Ultramsg (QR-based unofficial API).
      *
      * @param string $phone The recipient's phone number.
      * @param string $message The content of the message.
@@ -22,38 +22,33 @@ class WhatsAppService
                 throw new \Exception('Phone number and message are required.');
             }
 
-            // Meta App Credentials from .env
-            $token = env('WHATSAPP_META_TOKEN');
-            $phoneId = env('WHATSAPP_META_PHONE_ID');
-            $version = env('WHATSAPP_META_VERSION', 'v17.0');
+            // Ultramsg Credentials from .env
+            $instanceId = env('ULTRAMSG_INSTANCE_ID');
+            $token = env('ULTRAMSG_TOKEN');
 
-            if (!$token || !$phoneId) {
-                throw new \Exception('WhatsApp Meta credentials (Token or Phone ID) are not configured in .env.');
+            if (!$instanceId || !$token) {
+                throw new \Exception('Ultramsg credentials (Instance ID or Token) are not configured in .env.');
             }
 
-            // Official Meta API endpoint
-            $url = "https://graph.facebook.com/{$version}/{$phoneId}/messages";
+            // Ultramsg API endpoint
+            $url = "https://api.ultramsg.com/{$instanceId}/messages/chat";
 
             // Send POST request
-            $response = Http::withToken($token)
-                ->post($url, [
-                    'messaging_product' => 'whatsapp',
-                    'to' => $phone,
-                    'type' => 'text',
-                    'text' => [
-                        'body' => $message,
-                    ],
-                ]);
+            $response = Http::asForm()->post($url, [
+                'token' => $token,
+                'to' => $phone,
+                'body' => $message,
+            ]);
 
             if ($response->successful()) {
-                Log::info("WhatsApp message sent successfully to [{$phone}] via Meta API.");
+                Log::info("WhatsApp message sent successfully to [{$phone}] via Ultramsg.");
                 return true;
             } else {
-                throw new \Exception("Meta API rejected the request: " . $response->body());
+                throw new \Exception("Ultramsg API rejected the request: " . $response->body());
             }
 
         } catch (\Exception $e) {
-            // Log the error to ensure it doesn't break the application flow but we still have a record of it
+            // Log the error
             Log::error("Failed to send WhatsApp message to [{$phone}]. Error: " . $e->getMessage(), [
                 'phone' => $phone,
                 'message' => $message,
